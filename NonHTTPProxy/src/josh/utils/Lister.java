@@ -67,7 +67,7 @@ public class Lister implements Runnable{
 		          public void gotPacket(PcapPacket packet) {
 		        	  TcpPacket tcp = packet.get(TcpPacket.class);
 		        	  IpV4Packet ip = packet.get(IpV4Packet.class);
-		        	  if(tcp.getHeader().getSyn() && !tcp.getHeader().getAck() && !ip.getHeader().getSrcAddr().toString().equals("/"+IP)){
+		        	  if(tcp != null && tcp.getHeader().getSyn() && !tcp.getHeader().getAck() && !ip.getHeader().getSrcAddr().toString().equals("/"+IP)){
 		        		  //System.out.println(ip.getHeader().getSrcAddr() + " : " + tcp.getHeader().getDstPort().toString() );
 		        		  SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd:hh:mm");
 		        		  String time = sdf.format(new Date());
